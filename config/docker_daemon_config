@@ -1,0 +1,1 @@
+DOCKER_OPTS="--dns=192.168.10.10 --ip=192.168.10.10 --host=tcp://192.168.10.10:2375 --host=unix:///var/run/docker.sock --insecure-registry=registry.service.consul:5000"

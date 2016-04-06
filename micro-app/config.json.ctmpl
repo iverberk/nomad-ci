@@ -1,0 +1,31 @@
+
+{
+
+{{ with $env := env "ENV" }}
+    {{ with $redis := env "REDIS_SERVICE" }}
+        {{ with $name := env "NAME_SERVICE" }}
+            {{ with $age := env "AGE_SERVICE" }}
+                {{ range  $i, $s := service $redis }}
+                    {{ if eq $i 0 }}
+                        "redis_host": "{{.Address}}",
+                        "redis_port": {{.Port}},
+                    {{ end }}
+                {{ end }}
+
+                {{ range  $i, $s := service $name }}
+                    {{ if eq $i 0 }}
+                        "name_service_url": "{{.Address}}:{{.Port}}",
+                    {{ end }}
+                {{ end }}
+
+                {{ range  $i, $s := service $age }}
+                    {{ if eq $i 0 }}
+                        "age_service_url": "{{.Address}}:{{.Port}}"
+                    {{ end }}
+                {{ end }}
+            {{ end }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+}

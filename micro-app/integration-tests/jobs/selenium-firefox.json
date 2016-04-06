@@ -1,0 +1,84 @@
+{
+  "Job": {
+      "Datacenters": [
+        "dc1"
+      ],
+      "Priority": 50,
+      "Type": "service",
+      "ID": "selenium-firefox",
+      "Name": "selenium-firefox",
+      "Region": "global",
+      "TaskGroups": [
+        {
+          "Meta": null,
+          "Tasks": [
+            {
+              "LogConfig": {
+                "MaxFileSizeMB": 10,
+                "MaxFiles": 10
+              },
+              "KillTimeout": 5000000000,
+              "Name": "selenium-firefox",
+              "Driver": "docker",
+              "Config": {
+                "image": "selenium/node-firefox",
+                "port_map": [
+                  {
+                    "firefox": 5555
+                  }
+                ]
+              },
+              "Env": {
+                "HUB_PORT_4444_TCP_ADDR": "selenium-hub.service.consul",
+                "HUB_PORT_4444_TCP_PORT": "4444"
+              },
+              "Services": [
+                {
+                  "Checks": [
+                    {
+                      "Timeout": 2000000000,
+                      "Interval": 10000000000,
+                      "Type": "tcp",
+                      "Name": "alive"
+                    }
+                  ],
+                  "PortLabel": "firefox",
+                  "Name": "selenium-firefox"
+                }
+              ],
+              "Resources": {
+                "Networks": [
+                  {
+                    "Mbits": 10,
+                    "DynamicPorts": [
+                      {
+                        "Value": 0,
+                        "Label": "firefox"
+                      }
+                    ]
+                  }
+                ],
+                "IOPS": 0,
+                "DiskMB": 300,
+                "MemoryMB": 384,
+                "CPU": 384
+              }
+            }
+          ],
+          "RestartPolicy": {
+            "Mode": "delay",
+            "Delay": 25000000000,
+            "Interval": 300000000000,
+            "Attempts": 10
+          },
+          "Constraints": null,
+          "Count": 1,
+          "Name": "selenium-firefox"
+        }
+      ],
+      "Update": {
+        "MaxParallel": 1,
+        "Stagger": 10000000000
+      }
+    }
+}

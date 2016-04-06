@@ -1,0 +1,83 @@
+{
+  "Job": {
+      "Datacenters": [
+        "dc1"
+      ],
+      "Priority": 50,
+      "Type": "service",
+      "ID": "redis-###ENV###",
+      "Name": "redis-###ENV###",
+      "Region": "global",
+      "TaskGroups": [
+        {
+          "Meta": null,
+          "Tasks": [
+            {
+              "LogConfig": {
+                "MaxFileSizeMB": 10,
+                "MaxFiles": 10
+              },
+              "KillTimeout": 5000000000,
+              "Name": "redis-###ENV###",
+              "Driver": "docker",
+              "Config": {
+                "image": "redis",
+                "port_map": [
+                  {
+                    "mysql": 6379
+                  }
+                ]
+              },
+              "Env": {
+                "ENV": "###ENV###"
+              },
+              "Services": [
+                {
+                  "Checks": [
+                    {
+                      "Timeout": 2000000000,
+                      "Interval": 10000000000,
+                      "Type": "tcp",
+                      "Name": "alive"
+                    }
+                  ],
+                  "PortLabel": "mysql",
+                  "Name": "redis-###ENV###"
+                }
+              ],
+              "Resources": {
+                "Networks": [
+                  {
+                    "Mbits": 10,
+                    "DynamicPorts": [
+                      {
+                        "Value": 0,
+                        "Label": "mysql"
+                      }
+                    ]
+                  }
+                ],
+                "IOPS": 0,
+                "DiskMB": 300,
+                "MemoryMB": 128,
+                "CPU": 256
+              }
+            }
+          ],
+          "RestartPolicy": {
+            "Mode": "delay",
+            "Delay": 25000000000,
+            "Interval": 300000000000,
+            "Attempts": 10
+          },
+          "Constraints": null,
+          "Count": 1,
+          "Name": "redis-###ENV###"
+        }
+      ],
+      "Update": {
+        "MaxParallel": 1,
+        "Stagger": 10000000000
+      }
+    }
+}

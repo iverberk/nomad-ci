@@ -1,0 +1,9 @@
+job-dsl:1.44
+git:2.4.3
+ssh-credentials:1.11
+credentials:1.25
+matrix-project:1.6
+git-client:1.19.6
+mailer:1.16
+scm-api:1.0
+icon-shim:2.0.2

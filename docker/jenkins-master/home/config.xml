@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson>
+  <disabledAdministrativeMonitors/>
+  <version>1.642.2</version>
+  <numExecutors>2</numExecutors>
+  <mode>NORMAL</mode>
+  <useSecurity>true</useSecurity>
+  <authorizationStrategy class="hudson.security.AuthorizationStrategy$Unsecured"/>
+  <securityRealm class="hudson.security.SecurityRealm$None"/>
+  <disableRememberMe>false</disableRememberMe>
+  <projectNamingStrategy class="jenkins.model.ProjectNamingStrategy$DefaultProjectNamingStrategy"/>
+  <workspaceDir>${JENKINS_HOME}/workspace/${ITEM_FULLNAME}</workspaceDir>
+  <buildsDir>${ITEM_ROOTDIR}/builds</buildsDir>
+  <jdks/>
+  <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
+  <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>
+  <clouds>
+    <org.jenkinsci.plugins.nomad.NomadCloud plugin="nomad@1.0-SNAPSHOT">
+      <name>Nomad Cloud (Docker)</name>
+      <instanceCap>2147483647</instanceCap>
+      <templates>
+        <org.jenkinsci.plugins.nomad.NomadSlaveTemplate>
+          <idleTerminationInMinutes>1</idleTerminationInMinutes>
+          <cpu>400</cpu>
+          <memory>384</memory>
+          <disk>1000</disk>
+          <priority>50</priority>
+          <labels>nomad golang micro-app</labels>
+          <region>global</region>
+          <remoteFs>/go</remoteFs>
+          <image>registry.service.consul:5000/jenkins/slave-micro-app</image>
+          <cloud reference="../../.."/>
+          <driver>docker</driver>
+          <datacenters>
+            <string>dc1</string>
+          </datacenters>
+          <labelSet class="sorted-set">
+            <hudson.model.labels.LabelAtom>golang</hudson.model.labels.LabelAtom>
+            <hudson.model.labels.LabelAtom>micro-app</hudson.model.labels.LabelAtom>
+            <hudson.model.labels.LabelAtom>nomad</hudson.model.labels.LabelAtom>
+          </labelSet>
+        </org.jenkinsci.plugins.nomad.NomadSlaveTemplate>
+      </templates>
+      <name defined-in="org.jenkinsci.plugins.nomad.NomadCloud">Nomad Cloud (Docker)</name>
+      <nomadUrl>http://jenkins-master.service.consul:4646</nomadUrl>
+      <jenkinsUrl>http://jenkins-master.service.consul:8080/</jenkinsUrl>
+      <slaveUrl>http://jenkins-master.service.consul:8080/jnlpJars/slave.jar</slaveUrl>
+      <nomad>
+        <nomadApi>http://jenkins-master.service.consul:4646</nomadApi>
+      </nomad>
+    </org.jenkinsci.plugins.nomad.NomadCloud>
+  </clouds>
+  <quietPeriod>1</quietPeriod>
+  <scmCheckoutRetryCount>0</scmCheckoutRetryCount>
+  <views>
+    <hudson.model.AllView>
+      <owner class="hudson" reference="../../.."/>
+      <name>All</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+    </hudson.model.AllView>
+  </views>
+  <primaryView>All</primaryView>
+  <slaveAgentPort>50000</slaveAgentPort>
+  <label></label>
+  <nodeProperties/>
+  <globalNodeProperties/>
+  <noUsageStatistics>true</noUsageStatistics>
+</hudson>

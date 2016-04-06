@@ -1,0 +1,86 @@
+{
+  "Job": {
+      "Datacenters": [
+        "dc1"
+      ],
+      "Priority": 50,
+      "Type": "service",
+      "ID": "micro-app-###ENV###",
+      "Name": "micro-app-###ENV###",
+      "Region": "global",
+      "TaskGroups": [
+        {
+          "Meta": null,
+          "Tasks": [
+            {
+              "LogConfig": {
+                "MaxFileSizeMB": 10,
+                "MaxFiles": 10
+              },
+              "KillTimeout": 5000000000,
+              "Name": "micro-app-###ENV###",
+              "Driver": "docker",
+              "Config": {
+                "image": "registry.service.consul:5000/iverberk/micro-app",
+                "port_map": [
+                  {
+                    "http": 8080
+                  }
+                ]
+              },
+              "Env": {
+                "ENV": "###ENV###",
+                "REDIS_SERVICE": "redis-###ENV###",
+                "NAME_SERVICE": "name-###ENV###",
+                "AGE_SERVICE": "age-###ENV###"
+              },
+              "Services": [
+                {
+                  "Checks": [
+                    {
+                      "Timeout": 2000000000,
+                      "Interval": 10000000000,
+                      "Type": "tcp",
+                      "Name": "alive"
+                    }
+                  ],
+                  "PortLabel": "http",
+                  "Name": "micro-app-###ENV###"
+                }
+              ],
+              "Resources": {
+                "Networks": [
+                  {
+                    "Mbits": 10,
+                    "DynamicPorts": [
+                      {
+                        "Value": 0,
+                        "Label": "http"
+                      }
+                    ]
+                  }
+                ],
+                "IOPS": 0,
+                "DiskMB": 300,
+                "MemoryMB": 128,
+                "CPU": 256
+              }
+            }
+          ],
+          "RestartPolicy": {
+            "Mode": "delay",
+            "Delay": 5000000000,
+            "Interval": 300000000000,
+            "Attempts": 10
+          },
+          "Constraints": null,
+          "Count": 1,
+          "Name": "micro-app-###ENV###"
+        }
+      ],
+      "Update": {
+        "MaxParallel": 1,
+        "Stagger": 10000000000
+      }
+    }
+}

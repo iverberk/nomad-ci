@@ -10,7 +10,7 @@ directory to see how this is done.
 
 The Vagrantbox is configured to use 192.168.10.10 as a private IP on a host-only
 network. At this point Consul should be available on
-[http://192.168.10.10:8500/ui](http://192.168.10.10.8500/ui).  You can ssh into
+[http://192.168.10.10:8500/ui](http://192.168.10.10:8500/ui).  You can ssh into
 the Vagrant environment to verify that Nomad has actually scheduled Consul as a
 [system job](https://www.nomadproject.io/docs/jobspec/schedulers.html):
 

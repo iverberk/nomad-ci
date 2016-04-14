@@ -16,7 +16,7 @@ the Vagrant environment to verify that Nomad has actually scheduled Consul as a
 
 ``` 
 vagrant ssh 
-/vagrant/nomad/bin/nomad status consul 
+nomad status consul 
 ```
 
 All the Nomad [job

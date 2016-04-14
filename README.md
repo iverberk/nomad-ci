@@ -121,8 +121,8 @@ build and run integration tests. Build and push the Jenkins slave image with:
 ``` micro-app/support/jenkins-slave/build.sh ```
 
 With our slave image available to Nomad and Jenkins, we can now start building 
-and unit-testing our services. Run a new build on the "Platform - Build" project. 
-This will trigger the build of three other projects that are responsible for 
+and unit-testing our services. Run a new build on the [Platform - Build](http://192.168.10.10:8080/) 
+project. This will trigger the build of three other projects that are responsible for 
 compiling, testing and packaging of the services.
 
 The Jenkins jobs are really simple, they just trigger build scripts in the repository.
@@ -145,12 +145,12 @@ previously created.
 Now that we have successfully built and packaged our services as Docker 
 containers it is time to deploy them to a live environment. 
 
-Run a new build on the "Platform - Deploy" project. You will be asked to provide
-a name for the target environment. You can use anything you want here. The full
-working application, including the services and Redis, will be deployed to this
-environment. For now we'll use "test" as the target environment.  
+Run a new build on the [Platform - Deploy](http://192.168.10.10:8080/) project. 
+You will be asked to providea name for the target environment. You can use anything 
+you want here. The full working application, including the services and Redis, 
+will be deployed to this environment. For now we'll use "test" as the target environment.  
 
-During deployment you can check Consul on ```http://192.168.10.10:8500/ui``` to
+During deployment you can check Consul on [http://192.168.10.10:8500/ui](http://192.168.10.10:8080/) to
 see that the containers are being spun up. After some time the url to the environment 
 will available in the build output. Paste the url into a browser and see the 
 application in a working state. If you deploy again to a different environment 
@@ -159,13 +159,14 @@ has 4gb ram available).
 
 Nomad is again responsible for scheduling the application services to the
 cluster. To see how this is performed you can check the
-```micro-app/deploy/deploy.sh``` script. The script basically submits job
-definitions to Nomad after it has replaced some placeholders to set the correct
-environment. Take some time to study the [job templates](https://github.com/iverberk/nomad-ci/tree/master/micro-app/deploy/jobs)
+[deploy script](https://github.com/iverberk/nomad-ci/blob/master/micro-app/deploy/deploy.sh). 
+The script basically submits job definitions to Nomad after it has replaced some 
+placeholders to set the correct environment. Take some time to study the 
+[job templates](https://github.com/iverberk/nomad-ci/tree/master/micro-app/deploy/jobs) 
 and how the deploy script ties it all together.
 
-If you are done testing bring down the test environment with the 'Platform -
-Stop' project. This is necessary to free up resources for the next section.
+If you are done testing bring down the test environment with the [Platform -
+Stop](http://192.168.10.10:8080/) project. This is necessary to free up resources for the next section.
 
 #####Testing 
 
@@ -179,7 +180,7 @@ brought up in exactly the same way as described above. Once the integration
 environment is available, a Selenium test will be started to test that the
 application output is correct. The test will drive both browsers in parallel.
 
-Start the test by running the "Platform - Integration Test" project. You can
+Start the test by running the [Platform - Integration Test](http://192.168.10.10:8080/) project. You can
 follow the test progress in the console output. You can also check Consul to see
 that the browsers and services are being spun up (It might take some time to
 download the browser images so if the test fails you can try again and it will

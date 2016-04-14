@@ -181,7 +181,7 @@ Stop](http://192.168.10.10:8080/) project. This is necessary to free up resource
 #####Testing 
 
 Let's also test our application with Selenium to round it all off and again 
-show how useful Nomad is in scheduling these kinds of workloads . 
+show how useful Nomad is in scheduling these kinds of workloads. 
 
 At the beginning of this tutorial we started a Selenium Hub service. During the
 integration test, two browser nodes (Chrome and Firefox) will be scheduled to
@@ -189,6 +189,10 @@ connect to the hub automatically. After that, an integration environment will be
 brought up in exactly the same way as described above. Once the integration
 environment is available, a Selenium test will be started to test that the
 application output is correct. The test will drive both browsers in parallel.
+
+*important*: the integration test will spin up a dedicated environment for the
+integration test, so make sure that you stop any previously running environments
+(or you will run out of resources).
 
 Start the test by running the [Platform - Integration Test](http://192.168.10.10:8080/) project. You can
 follow the test progress in the console output. You can also check Consul to see

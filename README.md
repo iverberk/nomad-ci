@@ -8,7 +8,7 @@ as a system service. It is also running dnsmasq and reconfiguring the Docker
 daemon to listen on a tcp address. Take a look at the files in the config
 directory to see how this is done.
 
-*important*: if you restart the Vagrant box you will need to run the provision
+**important**: if you restart the Vagrant box you will need to run the provision
 step again to make sure that Nomad and Consul are up and running:
 
 ```
@@ -49,7 +49,7 @@ repository.
 registry container. It takes some time to download the image but after a while 
 the registry should be up and running and visible as a service in Consul. 
 
-*important*: the registry is not using a volume so if you restart the Vagrant
+**important**: the registry is not using a volume so if you restart the Vagrant
 box and Nomad schedules a new registry it will have lost all the previous images.
 You can just rebuild and push the images if necessary.
 
@@ -190,7 +190,7 @@ brought up in exactly the same way as described above. Once the integration
 environment is available, a Selenium test will be started to test that the
 application output is correct. The test will drive both browsers in parallel.
 
-*important*: the integration test will spin up a dedicated environment for the
+**important**: the integration test will spin up a dedicated environment for the
 integration test, so make sure that you stop any previously running environments
 (or you will run out of resources).
 

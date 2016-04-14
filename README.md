@@ -68,8 +68,8 @@ at the bottom of the page.
 #####Selenium Hub
 
 Finally we'll schedule a Selenium Hub on our platform as a central coordination
-point for our browser test grid: ``` scripts/start-selenium-hub.sh ``` After a
-while it should be available on ```http://192.168.10.10:4444/grid/console```
+point for our browser test grid: ```scripts/start-selenium-hub.sh``` After a
+while it should be available on [http://192.168.10.10:4444/grid/console](http://192.168.10.10:4444/grid/console)
 
 We now have a fully functioning CI/CD platform. You can check Consul to verify
 that all services are running. 

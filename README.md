@@ -74,8 +74,7 @@ while it should be available on [http://192.168.10.10:4444/grid/console](http://
 We now have a fully functioning CI/CD platform. You can check Consul to verify
 that all services are running. 
 
-Application 
-=========== 
+###Application 
 
 I've created a simple microservices application, called 'micro-app' to illustrate 
 the possibilities of our new platform. You can find it in the [micro-app](https://github.com/iverberk/nomad-ci/tree/master/micro-app) directory. 

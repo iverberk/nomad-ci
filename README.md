@@ -14,7 +14,10 @@ network. At this point Consul should be available on
 the Vagrant environment to verify that Nomad has actually scheduled Consul as a
 [system job](https://www.nomadproject.io/docs/jobspec/schedulers.html):
 
-``` vagrant ssh /vagrant/nomad/bin/nomad status consul ```
+``` 
+vagrant ssh 
+/vagrant/nomad/bin/nomad status consul 
+```
 
 All the Nomad [job
 specifications](https://www.nomadproject.io/docs/jobspec/index.html) can be

@@ -49,6 +49,10 @@ repository.
 registry container. It takes some time to download the image but after a while 
 the registry should be up and running and visible as a service in Consul. 
 
+*important*: the registry is not using a volume so if you restart the Vagrant
+box and Nomad schedules a new registry it will have lost all the previous images.
+You can just rebuild and push the images if necessary.
+
 #####Jenkins Master
 
 The Jenkins master will be a custom built container that has all the necessary

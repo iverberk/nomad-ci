@@ -149,7 +149,7 @@ You will be asked to providea name for the target environment. You can use anyth
 you want here. The full working application, including the services and Redis, 
 will be deployed to this environment. For now we'll use "test" as the target environment.  
 
-During deployment you can check Consul on [http://192.168.10.10:8500/ui](http://192.168.10.10:8080/) to
+During deployment you can check Consul on [http://192.168.10.10:8500/ui](http://192.168.10.10:8500/ui) to
 see that the containers are being spun up. After some time the url to the environment 
 will available in the build output. Paste the url into a browser and see the 
 application in a working state. If you deploy again to a different environment 

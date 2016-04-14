@@ -4,7 +4,7 @@ $script = <<SCRIPT
 apt-get install -y unzip daemon dnsmasq openjdk-7-jre-headless
 
 # Symlink the Nomad binary for easy access
-ln -s /vagrant/nomad/bin/nomad /usr/bin/nomad
+ln -sf /vagrant/nomad/bin/nomad /usr/bin/nomad
 
 # Start Nomad as a daemon in developer mode. This runs Nomad in server and client mode at the same time.
 daemon --name=nomad --output=/vagrant/nomad.log --command="/vagrant/nomad/bin/nomad agent -dev -config /vagrant/nomad/config"

@@ -8,6 +8,13 @@ as a system service. It is also running dnsmasq and reconfiguring the Docker
 daemon to listen on a tcp address. Take a look at the files in the config
 directory to see how this is done.
 
+*important*: if you restart the Vagrant box you will need to run the provision
+step again to make sure that Nomad and Consul are up and running:
+
+```
+vagrant provision
+```
+
 The Vagrantbox is configured to use 192.168.10.10 as a private IP on a host-only
 network. At this point Consul should be available on
 [http://192.168.10.10:8500/ui](http://192.168.10.10:8500/ui).  You can ssh into

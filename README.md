@@ -64,9 +64,9 @@ plugins to install and a template Jenkins home directory that contains all our
 build job configurations. This could easily be replaced by something like the 
 Job DSL configuration if that's what you prefer.
 
-It also contains a custom Jenkins [Nomad plugin](https://github.com/iverberk/jenkins-nomad) 
+*It also contains a custom Jenkins [Nomad plugin](https://github.com/iverberk/jenkins-nomad) 
 that I wrote to make Nomad available as a Cloud target. This allows Jenkins to 
-dynamically bring up new build slaves with Nomad, based on workload.
+dynamically bring up new build slaves with Nomad, based on workload.*
 
 To build the Jenkins master image and push it over to our private registry run:
 ``` docker/jenkins-master/build.sh ``` 

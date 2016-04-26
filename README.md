@@ -71,7 +71,7 @@ dynamically bring up new build slaves with Nomad, based on workload.*
 To build the Jenkins master image and push it over to our private registry run:
 ``` docker/jenkins-master/build.sh ``` 
 
-Let's schedule our freshly built image with Nomad: ``` scripts/start-jenkins-master.sh ``` 
+**After** building the image we schedule it with Nomad: ``` scripts/start-jenkins-master.sh ``` 
 After a short while the Jenkins master should be reachable on [http://192.168.10.10:8080](http://192.168.10.10:8080). 
 You can inspect the Nomad cloud configuration on [http://192.168.10.10:8080/configure](http://192.168.10.10:8080/configure)
 at the bottom of the page.

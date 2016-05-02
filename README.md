@@ -1,6 +1,9 @@
 Scalable CI/CD with Jenkins and Nomad 
 =====================================
 
+This is the accompanying repository to my [blog post](http://www.ivoverberk.nl/scalable-ci-cd-with-nomad-and-jenkins/) 
+on Scalable CI/CD with Jenkins and Nomad.
+
 Run ```vagrant up``` to start the platform (you will need about 4GB of free
 memory). The Vagrant shell provisioner is running a script that you can find in
 the Vagrantfile. It is starting Nomad as a daemon and scheduling Consul to run

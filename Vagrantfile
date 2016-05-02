@@ -1,16 +1,26 @@
 $script = <<SCRIPT
 
 # Install Java and dnsmasq
-apt-get install -y unzip daemon dnsmasq openjdk-7-jre-headless
+apt-get install -y unzip daemon dnsmasq
 
-# Symlink the Nomad binary for easy access
-ln -sf /vagrant/nomad/bin/nomad /usr/bin/nomad
+sleep 2
+
+echo Fetching Nomad...
+cd /tmp/
+rm -f nomad*
+wget --quiet https://releases.hashicorp.com/nomad/0.3.2/nomad_0.3.2_linux_amd64.zip -O nomad.zip
+echo Installing Nomad...
+unzip nomad.zip
+sudo chmod 755 nomad
+sudo mv nomad /usr/bin/nomad
 
 # Start Nomad as a daemon in developer mode. This runs Nomad in server and client mode at the same time.
-daemon --name=nomad --output=/vagrant/nomad.log --command="/vagrant/nomad/bin/nomad agent -dev -config /vagrant/nomad/config"
+echo Starting Nomad..
+daemon --name=nomad --output=/vagrant/nomad.log --command="/usr/bin/nomad agent -dev -config /vagrant/nomad/config"
 
 echo Fetching Consul...
 cd /tmp/
+rm -f consul*
 wget --quiet https://releases.hashicorp.com/consul/0.6.4/consul_0.6.4_linux_amd64.zip -O consul.zip
 echo Installing Consul...
 unzip consul.zip
@@ -24,7 +34,8 @@ cp -fr /vagrant/consul /usr/bin
 sleep 5
 
 # Schedule Consul on the node
-/vagrant/nomad/bin/nomad run /vagrant/nomad/jobs/consul.nomad
+echo Starting Consul..
+nomad run /vagrant/nomad/jobs/consul.nomad
 
 # Copy service configuration files
 sudo cp /vagrant/config/docker_daemon_config /etc/default/docker
@@ -43,7 +54,7 @@ Vagrant.configure(2) do |config|
     ci.vm.box = "ubuntu/trusty64"
     ci.vm.network "private_network", ip: "192.168.10.10"
     ci.vm.provider "virtualbox" do |vb|
-      vb.memory = 4096
+      vb.memory = 5120
       vb.cpus = 2
     end
     ci.vm.synced_folder ".", "/vagrant"

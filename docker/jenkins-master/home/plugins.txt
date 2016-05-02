@@ -7,3 +7,4 @@ git-client:1.19.6
 mailer:1.16
 scm-api:1.0
 icon-shim:2.0.2
+nomad:0.1

@@ -29,7 +29,7 @@
   <customWorkspace>src/github.com/iverberk/name-service</customWorkspace>
   <builders>
     <hudson.tasks.Shell>
-      <command>DOCKER_HOST=tcp://192.168.10.10:2375 micro-app/services/name/build.sh</command>
+      <command>DOCKER_HOST=tcp://docker.service.consul:2375 micro-app/services/name/build.sh</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>

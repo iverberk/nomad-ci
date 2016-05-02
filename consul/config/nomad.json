@@ -1,0 +1,9 @@
+{
+  "service": {
+    "name": "nomad",
+    "tags": ["nomad"],
+    "address": "192.168.10.10",
+    "port": 4646,
+    "enableTagOverride": false
+  }
+}

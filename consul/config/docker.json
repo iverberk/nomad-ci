@@ -1,0 +1,9 @@
+{
+  "service": {
+    "name": "docker",
+    "tags": ["docker"],
+    "address": "192.168.10.10",
+    "port": 2375,
+    "enableTagOverride": false
+  }
+}

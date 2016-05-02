@@ -10,5 +10,5 @@ fi
 jobs=("micro-app" "name-service" "age-service" "redis")
 for job in "${jobs[@]}"
 do
-    curl --silent -XDELETE --header "Content-Type: application/json" 192.168.10.10:4646/v1/job/$job-$ENV &> /dev/null
+    curl --silent -XDELETE --header "Content-Type: application/json" nomad.service.consul:4646/v1/job/$job-$ENV &> /dev/null
 done

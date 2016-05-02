@@ -2,7 +2,6 @@ FROM jenkins:1.642.2
 
 COPY home /usr/share/jenkins/ref/
 RUN /usr/local/bin/plugins.sh /usr/share/jenkins/ref/plugins.txt
-COPY nomad.hpi /usr/share/jenkins/ref/plugins/nomad.hpi
 
 USER root
 

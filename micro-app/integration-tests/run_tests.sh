@@ -18,9 +18,6 @@ npm install chai
 BASE_URL=$(curl --silent -XGET consul.service.consul:8500/v1/catalog/service/micro-app-integration | jq -r '.[0] | .Address + ":" + (.ServicePort | tostring) ')
 sed -i "s/###BASE_URL###/$BASE_URL/g" wdio.conf.js
 
-# Add some extra delay to allow image downloading
-sleep 20
-
 # Run tests
 echo "Running integration tests"
 wdio wdio.conf.js

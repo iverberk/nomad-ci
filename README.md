@@ -211,6 +211,7 @@ again, freeing up the resources.
 
 #####Make Commands
 - `make up` Start vagrant vm
+- `make halt` Stop vagrant vm
 - `make provision` Provision vm, must be run after reboot
 - `make ssh` ssh to vm
 - `make start_consul` Start Consul Service

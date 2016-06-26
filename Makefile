@@ -5,6 +5,9 @@
 up :
 	vagrant up
 
+halt :
+	vagrant halt
+	
 provision :
 	vagrant provision
 

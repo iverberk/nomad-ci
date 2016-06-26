@@ -209,7 +209,7 @@ script. It basically asks Nomad to schedule the browser nodes and start a full
 set of application services. After the tests are done it clears the environment 
 again, freeing up the resources.
 
-#####Make Commands
+###Make Commands
 Requires `make` to be installed. To install on your Mac, run: `xcode-select --install`
 - `make up` Start vagrant vm
 - `make halt` Stop vagrant vm

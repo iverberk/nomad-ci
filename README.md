@@ -210,6 +210,7 @@ set of application services. After the tests are done it clears the environment
 again, freeing up the resources.
 
 #####Make Commands
+Requires `make` to be installed. To install on your Mac, run: `xcode-select --install`
 - `make up` Start vagrant vm
 - `make halt` Stop vagrant vm
 - `make provision` Provision vm, must be run after reboot

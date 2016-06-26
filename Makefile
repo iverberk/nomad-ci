@@ -11,6 +11,15 @@ provision :
 ssh :
 	vagrant ssh
 
+start_consul :
+	scripts/start-consul.sh
+
+stop_consul :
+	scripts/stop-consul.sh
+
+start_nomad :
+	scripts/start-nomad.sh
+
 start_registry :
 	scripts/start-registry.sh
 

@@ -1,3 +1,3 @@
 .vagrant/
-consul/bin/
+consul/bin/*
 nomad.log

@@ -17,8 +17,10 @@ start_registry :
 stop_registry :
 	scripts/stop-registry.sh
 
-start_jenkins:
+build_jenkins :
 	docker/jenkins-master/build.sh
+
+start_jenkins :
 	scripts/start-jenkins-master.sh
 
 stop_jenkins :

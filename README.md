@@ -208,3 +208,19 @@ completed. You can check the mechanics of how this all works in [this](https://g
 script. It basically asks Nomad to schedule the browser nodes and start a full 
 set of application services. After the tests are done it clears the environment 
 again, freeing up the resources.
+
+#####Make Commands
+- `make up` vagrant up
+- `make provision` Provision vm, must be run after rebooot
+- `make ssh` ssh to vm
+- `make start_registry` Start Docker Registry
+- `make stop_registry` Stop Docker Registry
+- `make build_jenkins` Build Jenkins Image and add to Docker Registry
+- `make start_jenkins` Build Jenkins Image, add to Docker Registry, and Start Jenkins Server
+- `make stop_jenkins` Stop Jenkins Server
+- `make start_selenium` Start Selenium Server
+- `make stop_selenium` Stop Selenium Server
+- `make build_app` Build micro-app and add to Docker Registry
+- `make logs` Print logs 
+- `make status` Show Consul Status
+

@@ -34,7 +34,7 @@ specifications](https://www.nomadproject.io/docs/jobspec/index.html) can be
 found in the [jobs](https://github.com/iverberk/nomad-ci/tree/master/nomad/jobs)
 directory.
 
-###Platform Services
+### Platform Services
 
 At this point we are ready to start additional CI/CD services. In the
 [scripts](https://github.com/iverberk/nomad-ci/tree/master/scripts) directory
@@ -46,7 +46,7 @@ happening.
 Exit the virtual machine and run the following services from the root of the
 repository.
 
-#####Docker registry
+##### Docker registry
 
 ``` scripts/start-registry.sh ```. This instructs Nomad to schedule a Docker 
 registry container. It takes some time to download the image but after a while 
@@ -56,7 +56,7 @@ the registry should be up and running and visible as a service in Consul.
 box and Nomad schedules a new registry it will have lost all the previous images.
 You can just rebuild and push the images if necessary.
 
-#####Jenkins Master
+##### Jenkins Master
 
 The Jenkins master will be a custom built container that has all the necessary
 configuration to start building our application. 
@@ -79,7 +79,7 @@ After a short while the Jenkins master should be reachable on [http://192.168.10
 You can inspect the Nomad cloud configuration on [http://192.168.10.10:8080/configure](http://192.168.10.10:8080/configure)
 at the bottom of the page.
 
-#####Selenium Hub
+##### Selenium Hub
 
 Finally we'll schedule a Selenium Hub on our platform as a central coordination
 point for our browser test grid: ```scripts/start-selenium-hub.sh``` After a
@@ -88,12 +88,12 @@ while it should be available on [http://192.168.10.10:4444/grid/console](http://
 We now have a fully functioning CI/CD platform. You can check Consul to verify
 that all services are running. 
 
-###Application 
+### Application 
 
 I've created a simple microservices application, called 'micro-app' to illustrate 
 the possibilities of our new platform. You can find it in the [micro-app](https://github.com/iverberk/nomad-ci/tree/master/micro-app) directory. 
 
-#####Architecture
+##### Architecture
 
 The main purpose of the application is to simply generate, and possibly store, a
 personal introduction sentence of the following form: 
@@ -113,7 +113,7 @@ triggered by adding ```?store=true``` as a GET parameter. The next generated
 introduction will be stored and reused on subsequent refreshes. Use
 ```?clear=true``` to clear the cache and start generating new introductions.
 
-#####Building
+##### Building
 
 To build the micro-app microservices we need to provide Jenkins with the right
 build environment. Since we'll be running all our builds in a container this
@@ -153,7 +153,7 @@ Depending on how Jenkins chooses to schedule there might be multiple slaves
 starting. The builds are run in a container that is based on the image we
 previously created.
 
-#####Deploying 
+##### Deploying 
 
 Now that we have successfully built and packaged our services as Docker 
 containers it is time to deploy them to a live environment. 
@@ -181,7 +181,7 @@ and how the deploy script ties it all together.
 If you are done testing bring down the test environment with the [Platform -
 Stop](http://192.168.10.10:8080/) project. This is necessary to free up resources for the next section.
 
-#####Testing 
+##### Testing 
 
 Let's also test our application with Selenium to round it all off and again 
 show how useful Nomad is in scheduling these kinds of workloads. 
